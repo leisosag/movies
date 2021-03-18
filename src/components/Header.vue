@@ -47,7 +47,7 @@ export default {
 <style>
 .header-img img {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: block;
   overflow: hidden;
   object-fit: cover;
@@ -55,7 +55,7 @@ export default {
 .header-text {
   position: absolute;
   text-align: left;
-  bottom: 30%;
+  bottom: 35%;
   right: 12%;
   z-index: 1;
 }

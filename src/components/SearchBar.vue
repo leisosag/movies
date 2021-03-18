@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-3">
+  <div class="container py-5">
     <div
       class="row d-flex flex-column justify-content-center align-items-center"
       id="header"
@@ -14,7 +14,9 @@
             id="searchInput"
             placeholder="Busca una pelicula"
           />
-          <button class="btn btn-danger ml-3" type="submit">Buscar</button>
+          <button class="btn btn-danger ml-3" type="submit">
+            <i class="fas fa-search mr-2"></i>Buscar
+          </button>
         </form>
       </div>
     </div>
@@ -32,9 +34,8 @@ export default {
 };
 </script>
 
-<style>
-#header {
-  min-height: 30vh;
-  width: 100%;
+<style scoped>
+.btn-danger {
+  min-width: 8rem;
 }
 </style>

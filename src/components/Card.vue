@@ -4,7 +4,6 @@
       <img :src="imgUrl" class="card-img-top" :alt="movie.title" />
       <div class="card-body">
         <h5 class="card-title">{{ movie.title }}</h5>
-        <p class="card-text">{{ movie.overview }}</p>
       </div>
     </div>
   </div>
@@ -30,5 +29,24 @@ export default {
 
 <style>
 .card {
+  border: none;
+  position: relative;
+  background-color: transparent;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.card img {
+  border-radius: 1rem;
+}
+.card:hover {
+  cursor: pointer;
+  background-color: var(--red);
+}
+.card-body {
+  padding: 0.2rem;
+}
+.card-title {
+  font-weight: 400;
+  font-size: 1rem;
 }
 </style>
