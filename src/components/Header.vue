@@ -1,26 +1,38 @@
 <template>
-  <div class="container">
-    <div
-      class="row d-flex flex-column justify-content-center align-items-center"
-      id="header"
-    >
-      <h1>Y ahora que veo?</h1>
-      <p>Busca una pelicula</p>
-
-      <div class="col-md-8">
-        <form @submit.prevent="termSubmit" class="d-flex">
-          <label for="searchInput" class="sr-only">Search movies</label>
-          <input
-            onfocus="this.value=''"
-            class="form-control ml-2"
-            type="text"
-            id="searchInput"
-            placeholder="Busca una pelicula"
-          />
-          <button class="btn btn-outline-danger ml-3" type="submit">
-            Buscar
+  <div id="header">
+    <div class="header-img">
+      <picture>
+        <source
+          media="(min-width:401px)"
+          srcset="../assets/background-big.jpg"
+        />
+        <source
+          media="(max-width:400px)"
+          srcset="../assets/background-tall.jpg"
+        />
+        <img src="../assets/background-small.jpg" />
+      </picture>
+      <div class="header-text container">
+        <h1 class="text-white">I Care a Lot</h1>
+        <h2 class="text-white">
+          It is a long established fact that a reader will be distracted by the
+          readable.
+        </h2>
+        <p class="text-white">
+          The point of using Lorem Ipsum is that it has a more-or-less normal
+          distribution of letters, as opposed to using 'Content here, content
+          here'.
+        </p>
+        <a href="#">
+          <button class="btn btn-danger">
+            <i class="fas fa-caret-right mr-2"></i>Ver más
           </button>
-        </form>
+        </a>
+        <a href="#">
+          <button class="ml-3 btn btn-outline-light">
+            <i class="fas fa-plus mr-2"></i>Mi lista
+          </button>
+        </a>
       </div>
     </div>
   </div>
@@ -29,17 +41,34 @@
 <script>
 export default {
   name: 'Header',
-  methods: {
-    termSubmit(e) {
-      this.$emit('searchMovie', e.target[0].value);
-    },
-  },
 };
 </script>
 
 <style>
-#header {
-  min-height: 50vh;
+.header-img img {
   width: 100%;
+  height: 100vh;
+  display: block;
+  overflow: hidden;
+  object-fit: cover;
+}
+.header-text {
+  position: absolute;
+  text-align: left;
+  bottom: 30%;
+  right: 12%;
+  z-index: 1;
+}
+.header-text h1 {
+  font-size: 5rem;
+  line-height: 5rem;
+}
+.header-text h2 {
+  font-size: 1.5rem;
+  width: 40vw;
+}
+.header-text p {
+  font-size: 1rem;
+  width: 40vw;
 }
 </style>

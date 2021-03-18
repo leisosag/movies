@@ -1,17 +1,18 @@
 <template>
   <div class="container py-3">
-    <div class="grid-container my-3">
+    <!--<div class="grid-container my-3">
       <Card v-for="(movie, index) in movies" :key="index" :movie="movie" />
-    </div>
+    </div>-->
+    <p>Resultados</p>
   </div>
 </template>
 
 <script>
-import Card from './Card.vue';
+//import Card from './Card.vue';
 
 export default {
   name: 'Results',
-  components: { Card },
+  components: {},
   props: {
     movies: {
       type: Array,
