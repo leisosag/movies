@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-3">
+  <div @click="cardSelect" class="container my-3">
     <div class="card">
       <img :src="imgUrl" class="card-img-top" :alt="movie.title" />
       <div class="card-body">
@@ -24,6 +24,11 @@ export default {
       return path;
     },
   },
+  methods: {
+    cardSelect(e) {
+      this.$emit('cardSelected', e.target.alt);
+    },
+  },
 };
 </script>
 
@@ -32,15 +37,15 @@ export default {
   border: none;
   position: relative;
   background-color: transparent;
-  border-radius: 1rem;
+  border-radius: 0;
   padding: 0.5rem;
 }
 .card img {
-  border-radius: 1rem;
+  border-radius: 0;
 }
 .card:hover {
   cursor: pointer;
-  background-color: var(--red);
+  background-color: var(--dark-grey);
 }
 .card-body {
   padding: 0.2rem;

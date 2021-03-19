@@ -1,13 +1,14 @@
 <template>
-  <div class="container py-5" id="cards-container">
+  <div class="container pt-2" id="cards-container">
     <div class="row justify-content-between">
-      <h4 class="">Peliculas similares a {{ movieTitle }}</h4>
+      <h4 class="ml-3">{{ title }}</h4>
       <div class="col-12">
         <div class="grid-container my-3">
           <Card
-            v-for="(movie, index) in similarMovies"
+            v-for="(movie, index) in movies"
             :key="index"
             :movie="movie"
+            @cardSelected="cardSelected"
           />
         </div>
       </div>
@@ -22,13 +23,20 @@ export default {
   name: 'CardsContainer',
   components: { Card },
   props: {
-    similarMovies: {
+    movies: {
       type: Array,
       required: true,
     },
     movieTitle: {
       type: String,
-      required: true,
+    },
+    title: {
+      type: String,
+    },
+  },
+  methods: {
+    cardSelected(title) {
+      this.$emit('cardSelected', title);
     },
   },
 };

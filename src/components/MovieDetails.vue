@@ -1,28 +1,30 @@
 <template>
   <div class="container py-5" id="movie-details">
     <div class="row justify-content-center">
-      <div class="col-md-3" id="img-container">
+      <div class="col-md-3 pt-2" id="img-container">
         <img :src="imgUrl" class="img-fluid" :alt="movie.title" />
       </div>
-      <div class="col-md-6 d-flex flex-column justify-content-between">
+      <div class="col-md-6 pt-2 d-flex flex-column justify-content-between">
         <div class="ranking">
           <i class="fas fa-star"></i>
           <h5>{{ movie.vote_average }}</h5>
           <span>/10</span>
         </div>
         <h5 class="title">{{ movie.title }}</h5>
-        <p class="date">Release date: 2{{ movie.release_date }}</p>
+        <p class="date">Release date: {{ movie.release_date }}</p>
         <p class="text">
           {{ movie.overview }}
         </p>
         <div class="genre-container d-flex mb-2">
           <GenreBtn
-            v-for="(genre, index) in genreNames"
-            :key="index"
+            v-for="(genre, id) in genresFound"
+            :key="id"
             :genre="genre"
+            :id="id"
+            @getGenre="getGenre"
           />
         </div>
-        <div class="d-flex">
+        <div class="d-flex mt-3">
           <a :href="url" target="_blank">
             <button class="btn btn-danger mr-2 mb-1">
               <i class="fas fa-external-link-alt mr-2"></i>Rotten Tomatoes
@@ -51,9 +53,8 @@ export default {
       type: Object,
       required: true,
     },
-    genreNames: {
+    genresFound: {
       type: Array,
-      required: true,
     },
   },
   computed: {
@@ -77,6 +78,9 @@ export default {
     },
     createLink(title) {
       return `https://www.rottentomatoes.com/m/${title}`;
+    },
+    getGenre(id, name) {
+      this.$emit('getGenre', id, name);
     },
   },
 
@@ -112,7 +116,7 @@ span {
   color: var(--white);
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 .date {
   font-size: 0.8rem;
